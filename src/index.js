@@ -35,6 +35,40 @@ if (minutes < 10) {
   minutes = "0" + minutes;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  days.forEach(function (day, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
+  <div class="col-2">
+    <div class="forecast-date">${day}</div>
+    <img src="images/sun.svg" alt="forecast-icon" width = 50px/>
+    <div class="forecast-temps">
+      <span class="forecast-temp-max"> 25° </span>
+      <span class="forecast-temp-min"> 15° </span>
+    </div>
+  </div>
+
+
+`;
+    }
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showTemperature(response) {
   let icon = document.querySelector("#iconNow");
   icon.setAttribute(
@@ -131,3 +165,4 @@ celsiusLink.addEventListener("click", displayCelsiusTemp);
 let celsiusTemp = null;
 
 search("Harare");
+displayForecast();

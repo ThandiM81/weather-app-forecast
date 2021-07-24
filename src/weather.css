@@ -6,19 +6,21 @@ body {
 
 h1 {
   padding-top: 10px;
-}
-
-a.active {
-  color: black;
+  font-size: 30px;
 }
 
 h2 {
   margin-bottom: 10px;
+  font-size: 25px;
 }
 
 h3 {
   margin-bottom: 10px;
   font-size: 20px;
+}
+
+a.active {
+  color: black;
 }
 
 a#celsius-templink {
@@ -105,13 +107,13 @@ li::first-letter {
   margin-top: 30px;
 }
 .forecast-date {
-  font-size: 26px;
+  font-size: 18px;
 }
 .forecast-temp-max {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .forecast-temp-min {
-  font-size: 20px;
+  font-size: 14px;
   opacity: 0.7;
 }
