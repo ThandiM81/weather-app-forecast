@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather app forecast</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="src/weather.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="weather-app-wrapper">
+        <form id="search-form" class="mb-3">
+          <div class="row">
+            <div class="col-8">
+              <input
+                type="search"
+                placeholder="Enter city...."
+                class="form-control"
+                id="city-entry"
+                autocomplete="off"
+              />
+            </div>
+            <div class="col-2">
+              <input
+                type="submit"
+                value="Search 🔍"
+                class="search-button"
+                id="search-city"
+              />
+            </div>
+            <div class="col-2">
+              <input
+                type="submit"
+                value="Current 📍"
+                class="location-button"
+                id="location-search"
+              />
+            </div>
+          </div>
+        </form>
+        <div class="overview">
+          <h1 id="city"></h1>
+          <h2 id="date"></h2>
+          <h3 id="time"></h3>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="float-left">
+              <img src="" alt="weather icon today" id="iconNow" />
+              <span class="currentTemp" id="tempDisplay"> </span>
+              <span class="units">
+                <a href="#" id="celsius-templink" class="active">°C </a> |
+                <a href="#" id="fahren-templink">°F</a>
+              </span>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <ul class="conditions">
+              <li>
+                <small class="text-muted" id="current"
+                  >Current conditions:
+                </small>
+              </li>
+              <li>
+                <small class="text-muted" id="rain">Precipitation: %</small>
+              </li>
+              <li>
+                <small class="text-muted" id="humid">Humidity: %</small>
+              </li>
+              <li>
+                <small class="text-muted" id="wind">Wind: km/h</small>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="weather-forecast">
+          <div class="row"></div>
+            <div class="col-2">
+              <div class="forecast-date">Sun</div>
+              <img src="images/sun.svg" alt="forecast-icon" width="50px" />
+              <div class="forecast-temps">
+                <span class="forecast-temp-max"> 25° </span>
+                <span class="forecast-temp-min"> 15° </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="small">
+      <a href="https://github.com/ThandiM81/weather-app" target="_blank">
+        Open-source code</a
+      >
+      by Thandi M
+    </footer>
+    <script src="src/index.js"></script>
+  </body>
+</html>
