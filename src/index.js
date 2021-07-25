@@ -1,4 +1,5 @@
 let now = new Date();
+
 let days = [
   "Sunday",
   "Monday",
@@ -23,6 +24,7 @@ let months = [
   "November",
   "December",
 ];
+
 let day = days[now.getDay()];
 let date = now.getDate();
 let month = months[now.getMonth()];
@@ -35,38 +37,46 @@ if (minutes < 10) {
   minutes = "0" + minutes;
 }
 
-function displayForecast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+function displayForecast(response) {
+  //console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  days.forEach(function (day, index) {
+
+  forecast.forEach(function (day, index) {
     if (index < 6) {
       forecastHTML =
         forecastHTML +
         `
   <div class="col-2">
-    <div class="forecast-date">${day}</div>
+    <div class="forecast-date">${formatDay(day.dt)}</div>
     <img src="images/sun.svg" alt="forecast-icon" width = 50px/>
     <div class="forecast-temps">
-      <span class="forecast-temp-max"> 25° </span>
-      <span class="forecast-temp-min"> 15° </span>
+      <span class="forecast-temp-max"> ${Math.round(day.temp.max)}° </span>
+      <span class="forecast-temp-min"> ${Math.round(day.temp.min)}° </span>
     </div>
   </div>
-
 
 `;
     }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  let apiKey = "c0e5a5c3b664f47b5456256e176f47e9";
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function showTemperature(response) {
@@ -106,6 +116,9 @@ function showTemperature(response) {
   let wind = Math.round(response.data.wind.speed);
   let currentWind = document.querySelector("#wind");
   currentWind.innerHTML = `Windspeed: ${wind} km/h`;
+
+  getForecast(response.data.coord);
+  // console.log(response.data);
 }
 function showPlace(position) {
   let apiKey = "c0e5a5c3b664f47b5456256e176f47e9";
@@ -165,4 +178,3 @@ celsiusLink.addEventListener("click", displayCelsiusTemp);
 let celsiusTemp = null;
 
 search("Harare");
-displayForecast();
