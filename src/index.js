@@ -46,7 +46,6 @@ function formatDay(timestamp) {
 }
 
 function displayForecast(response) {
-  console.log(response.data.daily);
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
@@ -61,7 +60,7 @@ function displayForecast(response) {
     <img src =
     "http://openweathermap.org/img/wn/${
       day.weather[0].icon
-    }@2x.png" alt="forecast-icon" width = 50px />
+    }@2x.png" alt="forecast-icon" width = 80px />
     <div class="forecast-temps">
       <span class="forecast-temp-max"> ${Math.round(day.temp.max)}° </span>
       <span class="forecast-temp-min"> ${Math.round(day.temp.min)}° </span>
@@ -121,7 +120,6 @@ function showTemperature(response) {
   currentWind.innerHTML = `Windspeed: ${wind} km/h`;
 
   getForecast(response.data.coord);
-  // console.log(response.data);
 }
 function showPlace(position) {
   let apiKey = "c0e5a5c3b664f47b5456256e176f47e9";
@@ -154,30 +152,5 @@ function handleSubmit(event) {
 
 let button1 = document.querySelector("#search-city");
 button1.addEventListener("click", handleSubmit);
-
-function displayFahrenTemp(event) {
-  event.preventDefault();
-  let temperatureShown = document.querySelector("#tempDisplay");
-  fahrenLink.classList.add("active");
-  celsiusLink.classList.remove("active");
-  let fahrenTemp = (celsiusTemp * 9) / 5 + 32;
-  temperatureShown.innerHTML = Math.round(fahrenTemp);
-}
-
-let fahrenLink = document.querySelector("#fahren-templink");
-fahrenLink.addEventListener("click", displayFahrenTemp);
-
-function displayCelsiusTemp(event) {
-  event.preventDefault();
-  let temperatureShown = document.querySelector("#tempDisplay");
-  fahrenLink.classList.remove("active");
-  celsiusLink.classList.add("active");
-  temperatureShown.innerHTML = Math.round(celsiusTemp);
-}
-
-let celsiusLink = document.querySelector("#celsius-templink");
-celsiusLink.addEventListener("click", displayCelsiusTemp);
-
-let celsiusTemp = null;
 
 search("Harare");
