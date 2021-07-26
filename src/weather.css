@@ -1,7 +1,5 @@
 body {
   font-family: "Source Sans Pro", sans-serif;
-  margin: 30px 30px;
-  display: block;
 }
 
 h1 {
@@ -43,15 +41,28 @@ ul.conditions {
 }
 .container {
   border-radius: 5px;
+  margin-top: 30px;
+  max-width: 620px;
   border-style: solid;
-  max-width: 700px;
-  padding: 20px;
-
-  background: radial-gradient(
-    circle at 10% 20%,
-    rgb(254, 255, 165) 0%,
-    rgb(251, 236, 187) 90%
+  background-image: linear-gradient(
+    to bottom,
+    #dedede,
+    #dcdcdc,
+    #dad9da,
+    #d8d7d8,
+    #d6d4d6,
+    #d3d1d3,
+    #d0cfd1,
+    #cdccce,
+    #c9c9ca,
+    #c5c5c6,
+    #c2c2c2,
+    #bebebe
   );
+}
+.weather-app {
+  max-width: 600px;
+  margin: 10px auto;
 }
 .weather-app-wrapper {
   max-width: 600px;
@@ -60,14 +71,14 @@ ul.conditions {
 .search-button {
   line-height: 30px;
   border-radius: 4px;
-  background-color: rgba(251, 238, 178, 0.986);
+  background-color: white;
   width: 100%;
   font-size: 80%;
 }
 .location-button {
   line-height: 30px;
   border-radius: 4px;
-  background-color: rgb(251, 236, 187);
+  background-color: white;
   width: 100%;
   font-size: 80%;
 }

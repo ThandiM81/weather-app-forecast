@@ -20,9 +20,8 @@
 <link rel="stylesheet" href="src/weather.css" />
   </head>
   <body>
-     
     <div class="container">
-      
+      <div class = "weather-app">
       <div class="weather-app-wrapper">
         <form id="search-form" class="mb-2">
           <div class="row">
@@ -36,7 +35,7 @@
                 autofocus = "on"
               />
             </div>
-            <div class="col-2">
+            <div class="col-2" id = "find">
               <input
                 type="submit"
                 value="Search 🔍"
@@ -44,7 +43,7 @@
                 id="search-city"
               />
             </div>
-            <div class="col-2">
+            <div class="col-2" id = "locate">
               <input
                 type="submit"
                 value="Current 📍"
@@ -90,7 +89,7 @@
           </div>
         </div>
         <div class="weather-forecast" id="forecast">
-          
+        </div>  
       </div>
     </div>
 
